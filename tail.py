@@ -37,9 +37,6 @@ class Tail:
                     else:
                         self.callback(line)
 
-    def register_callback(self, func):
-        self.callback = func
-
     def check_file_validity(self, raise_error=True):
         if not os.access(self.tailed_file, os.F_OK):
             err = "File '%s' does not exist" % self.tailed_file
@@ -63,3 +60,7 @@ class Tail:
                 print(err)
                 return False
         return True
+    
+    def register_callback(self, func):
+        self.callback = func
+        
